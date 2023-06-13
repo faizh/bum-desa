@@ -98,6 +98,15 @@ Route::get('/admin-berita-add', function () {
     return view('admin-berita-add');
 })->name('admin-berita-add');
 
-Route::prefix('admin')->group(function () {
-    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-})->middleware('auth');
+
+
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+    Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard');
+    Route::get('/berita', [AdminController::class, 'berita'])->name('berita');
+    Route::get('/portofolio', [AdminController::class, 'portofolio'])->name('portofolio');
+    Route::get('/layanan_keuangan', [AdminController::class, 'layananKeuangan'])->name('layanan_keuangan');
+    Route::get('/layanan_peminjaman', [AdminController::class, 'layananPeminjaman'])->name('layanan_peminjaman');
+});
+
+Route::post('/act_login', [AdminController::class, 'authenticate'])->name('post.login');
+Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
