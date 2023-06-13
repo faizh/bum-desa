@@ -42,22 +42,27 @@ class adminController extends Controller
     }
 
     function dashboard() : View {
-        return view('admin.contents.dashboard');
+        $page = "dashboard";
+        return view('admin.contents.dashboard', ['page' => $page]);
     }
 
     function berita() : View {
-        return view('admin.contents.berita');
+        $page = "berita";
+        return view('admin.contents.berita', ['page' => $page]);
     }
 
     function portofolio() : View {
-        return view('admin.contents.portofolio');
+        $page = "portofolio";
+        return view('admin.contents.portofolio', ['page' => $page]);
     }
 
     function layananKeuangan() : View {
-        return view('admin.contents.layanan-keuangan');
+        $page = "layanan-keuangan";
+        return view('admin.contents.layanan-keuangan', ['page' => $page]);
     }
 
     function layananPeminjaman() : View {
-        return view('admin.contents.layanan-peminjaman');
+        $page = "layanan-peminjaman";
+        return view('admin.contents.layanan-peminjaman', ['page' => $page]);
     }
 }

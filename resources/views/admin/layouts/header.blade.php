@@ -42,23 +42,23 @@
                 <div class="menu-inner">
                     <nav>
                         <ul class="metismenu" id="menu">
-                            <li class="active">
-                                <a href="{{url('/admin')}}" aria-expanded="true"><span>Dashboard</span></a>
+                            <li class="@if ($page == 'dashboard') active @endif">
+                                <a href="{{ route('dashboard')}}" aria-expanded="true"><span>Dashboard</span></a>
                             </li>
-                            <li>
-                                <a href="{{url('/admin-berita')}}" aria-expanded="true"><span>Berita
+                            <li class="@if ($page == 'berita') active @endif">
+                                <a href="{{ route('berita') }}" aria-expanded="true"><span>Berita
                                     </span></a>
                             </li>
-                            <li>
-                                <a href="{{url('/admin-porto')}}" aria-expanded="true"><span>Portofolio
+                            <li class="@if ($page == 'portofolio') active @endif">
+                                <a href="{{ route('portofolio') }}" aria-expanded="true"><span>Portofolio
                                     </span></a>
                             </li>
-                            <li>
-                                <a href="{{url('/admin-pkeuangan')}}" aria-expanded="true"><span>Layanan Keuangan
+                            <li class="@if ($page == 'layanan-keuangan') active @endif">
+                                <a href="{{ route('layanan_keuangan') }}" aria-expanded="true"><span>Layanan Keuangan
                                     </span></a>
                             </li>
-                            <li>
-                                <a href="{{url('/admin-pbarang')}}" aria-expanded="true"><span>Layanan Peminjaman
+                            <li class="@if ($page == 'layanan-peminjaman') active @endif">
+                                <a href="{{ route('layanan_peminjaman') }}" aria-expanded="true"><span>Layanan Peminjaman
                                     </span></a>
                             </li>
                         </ul>
