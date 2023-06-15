@@ -9,40 +9,33 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
                         <h4 class="header-title mb-0">Berita</h4>
-                        <button type="button" class="btn btn-primary">Add</button>
+                        <a href="{{ route('berita-create')}}" class="btn btn-sm btn-primary">Add</a>
                     </div>
                     <div>
                         <table class="table">
                             <thead>
                               <tr>
-                                <th scope="col">id</th>
-                                <th scope="col">Gambar</th>
+                                <th scope="col">ID</th>
                                 <th scope="col">Judul</th>
-                                <th scope="col">Isi Berita</th>
-                                <th scope="col">Tanggal</th>
-                                <th scope="col">Edit</th>
-                                <th scope="col">Delete</th>
+                                <th scope="col">Created By</th>
+                                <th scope="col">Created At</th>
+                                <th scope="col">Action</th>
                               </tr>
                             </thead>
                             <tbody>
+                              @foreach ($news_list as $key => $news)
                               <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td><button type="button" class="btn btn-success">Update</button></td>
-                                <td><button type="button" class="btn btn-danger">Delete</button></td>
+                                <th scope="row">{{ $key+1 }}</th>
+                                <td>{{ $news->title }}</td>
+                                <td>{{ $news->name }}</td>
+                                <td>{{ date("d-m-Y H:i", strtotime($news->created_at)) }}</td>
+                                <td>
+                                  <a href="{{ route('berita-view', $news->id) }}" class="btn btn-xs btn-primary"><i class="bi bi-eye"></i></a>
+                                  <a href="{{ route('berita-edit', $news->id) }}" class="btn btn-xs btn-warning"><i class="bi bi-pencil"></i></a>
+                                  <a href="{{ route('berita-delete', $news->id) }}" class="btn btn-xs btn-danger"><i class="bi bi-trash"></i></a>
+                                </td>
                               </tr>
-                              <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td><button type="button" class="btn btn-success">Update</button></td>
-                                <td><button type="button" class="btn btn-danger">Delete</button></td>
-                              </tr>
+                              @endforeach
                             </tbody>
                           </table>
                     </div>

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\News;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 class adminController extends Controller
@@ -44,11 +46,6 @@ class adminController extends Controller
     function dashboard() : View {
         $page = "dashboard";
         return view('admin.contents.dashboard', ['page' => $page]);
-    }
-
-    function berita() : View {
-        $page = "berita";
-        return view('admin.contents.berita', ['page' => $page]);
     }
 
     function portofolio() : View {

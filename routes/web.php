@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 
@@ -102,7 +103,15 @@ Route::get('/admin-berita-add', function () {
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard');
-    Route::get('/berita', [AdminController::class, 'berita'])->name('berita');
+
+    Route::get('/berita', [NewsController::class, 'index'])->name('berita');
+    Route::get('/berita/create', [NewsController::class, 'create'])->name('berita-create');
+    Route::post('/berita/store', [NewsController::class, 'store'])->name('berita-store');
+    Route::get('/berita/view/{id}', [NewsController::class, 'show'])->name('berita-view');
+    Route::get('/berita/edit/{id}', [NewsController::class, 'edit'])->name('berita-edit');
+    Route::post('/berita/update/{id}', [NewsController::class, 'update'])->name('berita-update');
+    Route::get('/berita/delete/{id}', [NewsController::class, 'destroy'])->name('berita-delete');
+
     Route::get('/portofolio', [AdminController::class, 'portofolio'])->name('portofolio');
     Route::get('/layanan_keuangan', [AdminController::class, 'layananKeuangan'])->name('layanan_keuangan');
     Route::get('/layanan_peminjaman', [AdminController::class, 'layananPeminjaman'])->name('layanan_peminjaman');
