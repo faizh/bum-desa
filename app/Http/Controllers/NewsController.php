@@ -18,7 +18,7 @@ class NewsController extends Controller
     {
         $news = News::getAllNews();
         $page = "berita";
-        return view('admin.contents.berita', ['page' => $page, 'news_list' => $news]);
+        return view('admin.contents.berita.berita', ['page' => $page, 'news_list' => $news]);
     }
 
     /**
@@ -27,7 +27,7 @@ class NewsController extends Controller
     public function create()
     {
         $page = "berita";
-        return view('admin.contents.berita-create', ['page' => $page]);
+        return view('admin.contents.berita.berita-create', ['page' => $page]);
     }
 
     /**
@@ -77,7 +77,7 @@ class NewsController extends Controller
         
         $news->image_upload_path = Storage::url($news->image_upload_path);
         
-        return view('admin.contents.berita-view', ['page' => $page, 'news' => $news]);
+        return view('admin.contents.berita.berita-view', ['page' => $page, 'news' => $news]);
     }
 
     /**
@@ -90,7 +90,7 @@ class NewsController extends Controller
 
         $news->image_upload_path = Storage::url($news->image_upload_path);
         
-        return view('admin.contents.berita-edit', ['page' => $page, 'news' => $news]);
+        return view('admin.contents.berita.berita-edit', ['page' => $page, 'news' => $news]);
     }
 
     /**

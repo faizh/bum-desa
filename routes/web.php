@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\PortfolioController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 
@@ -112,7 +113,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::post('/berita/update/{id}', [NewsController::class, 'update'])->name('berita-update');
     Route::get('/berita/delete/{id}', [NewsController::class, 'destroy'])->name('berita-delete');
 
-    Route::get('/portofolio', [AdminController::class, 'portofolio'])->name('portofolio');
+    Route::get('/portofolio', [PortfolioController::class, 'index'])->name('portofolio');
+    Route::get('/portofolio/create', [PortfolioController::class, 'create'])->name('portofolio-create');
+    Route::post('/portofolio/store', [PortfolioController::class, 'store'])->name('portofolio-store');
+    Route::get('/portofolio/view/{id}', [PortfolioController::class, 'show'])->name('portofolio-view');
+    Route::get('/portofolio/edit/{id}', [PortfolioController::class, 'edit'])->name('portofolio-edit');
+    Route::post('/portofolio/update/{id}', [PortfolioController::class, 'update'])->name('portofolio-update');
+    Route::get('/portofolio/delete/{id}', [PortfolioController::class, 'destroy'])->name('portofolio-delete');
+
     Route::get('/layanan_keuangan', [AdminController::class, 'layananKeuangan'])->name('layanan_keuangan');
     Route::get('/layanan_peminjaman', [AdminController::class, 'layananPeminjaman'])->name('layanan_peminjaman');
 });

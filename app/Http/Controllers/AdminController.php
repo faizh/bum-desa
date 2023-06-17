@@ -48,11 +48,6 @@ class adminController extends Controller
         return view('admin.contents.dashboard', ['page' => $page]);
     }
 
-    function portofolio() : View {
-        $page = "portofolio";
-        return view('admin.contents.portofolio', ['page' => $page]);
-    }
-
     function layananKeuangan() : View {
         $page = "layanan-keuangan";
         return view('admin.contents.layanan-keuangan', ['page' => $page]);
