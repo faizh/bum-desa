@@ -49,8 +49,7 @@ class adminController extends Controller
     }
 
     function layananKeuangan() : View {
-        $page = "layanan-keuangan";
-        return view('admin.contents.layanan-keuangan', ['page' => $page]);
+        
     }
 
     function layananPeminjaman() : View {

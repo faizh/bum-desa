@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\NewsController;
-use App\Http\Controllers\PortfolioController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NewsController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\MoneyLoanController;
+use App\Http\Controllers\PortfolioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -121,7 +122,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::post('/portofolio/update/{id}', [PortfolioController::class, 'update'])->name('portofolio-update');
     Route::get('/portofolio/delete/{id}', [PortfolioController::class, 'destroy'])->name('portofolio-delete');
 
-    Route::get('/layanan_keuangan', [AdminController::class, 'layananKeuangan'])->name('layanan_keuangan');
+    Route::get('/layanan_keuangan', [MoneyLoanController::class, 'index'])->name('layanan_keuangan');
+    Route::get('/layanan_keuangan/create', [MoneyLoanController::class, 'create'])->name('layanan_keuangan-create');
+    Route::post('/layanan_keuangan/store', [MoneyLoanController::class, 'store'])->name('layanan_keuangan-store');
+    Route::get('/layanan_keuangan/view/{id}', [MoneyLoanController::class, 'show'])->name('layanan_keuangan-view');
+    Route::get('/layanan_keuangan/edit/{id}', [MoneyLoanController::class, 'edit'])->name('layanan_keuangan-edit');
+    Route::post('/layanan_keuangan/update/{id}', [MoneyLoanController::class, 'update'])->name('layanan_keuangan-update');
+    Route::get('/layanan_keuangan/delete/{id}', [MoneyLoanController::class, 'destroy'])->name('layanan_keuangan-delete');
+
     Route::get('/layanan_peminjaman', [AdminController::class, 'layananPeminjaman'])->name('layanan_peminjaman');
 });
 
