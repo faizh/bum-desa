@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\GoodsLoanController;
 use App\Http\Controllers\MoneyLoanController;
 use App\Http\Controllers\PortfolioController;
 
@@ -130,7 +131,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::post('/layanan_keuangan/update/{id}', [MoneyLoanController::class, 'update'])->name('layanan_keuangan-update');
     Route::get('/layanan_keuangan/delete/{id}', [MoneyLoanController::class, 'destroy'])->name('layanan_keuangan-delete');
 
-    Route::get('/layanan_peminjaman', [AdminController::class, 'layananPeminjaman'])->name('layanan_peminjaman');
+    Route::get('/layanan_peminjaman', [GoodsLoanController::class, 'index'])->name('layanan_peminjaman');
+    Route::get('/layanan_peminjaman/create', [GoodsLoanController::class, 'create'])->name('layanan_peminjaman-create');
+    Route::post('/layanan_peminjaman/store', [GoodsLoanController::class, 'store'])->name('layanan_peminjaman-store');
 });
 
 Route::post('/act_login', [AdminController::class, 'authenticate'])->name('post.login');
