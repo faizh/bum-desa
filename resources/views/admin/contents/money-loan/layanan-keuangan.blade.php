@@ -18,11 +18,8 @@
                                 <th scope="col">No</th>
                                 <th scope="col">NIK</th>
                                 <th scope="col">Nama</th>
-                                <th scope="col">Alamat Lengkap</th>
-                                <th scope="col">No telfon</th>
                                 <th scope="col">Nominal Peminjaman</th>
                                 <th scope="col">Jumlah Bulan</th>
-                                <th scope="col">Pembayaran Perbulan</th>
                                 <th scope="col">Action</th>
                               </tr>
                             </thead>
@@ -32,11 +29,8 @@
                                   <td>{{ $key+1 }}</td>
                                   <td>{{ $loan->nik }}</td>
                                   <td>{{ $loan->name }}</td>
-                                  <td>{{ $loan->address }}</td>
-                                  <td>{{ $loan->phone_number }}</td>
                                   <td>{{ $loan->nominal }}</td>
                                   <td>{{ $loan->tenor }}</td>
-                                  <td>{{ $loan->monthly_fee }}</td>
                                   <td>
                                     <a href="{{ route('layanan_keuangan-view', $loan->id) }}" class="btn btn-xs btn-primary"><i class="bi bi-eye"></i></a>
                                     <a href="{{ route('layanan_keuangan-edit', $loan->id) }}" class="btn btn-xs btn-warning"><i class="bi bi-pencil"></i></a>
