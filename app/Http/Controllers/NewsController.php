@@ -141,4 +141,8 @@ class NewsController extends Controller
 
         return redirect()->route('berita');
     }
+
+    public function userNews() : View {
+        echo 1;
+    }
 }
