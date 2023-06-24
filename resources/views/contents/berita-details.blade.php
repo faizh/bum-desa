@@ -8,17 +8,18 @@
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Berita</h2>
+          <h2>Berita Lengkap</h2>
           <ol>
             <li><a href="index.html">Home</a></li>
-            <li>Berita</li>
+            <li><a href="blog.html">Berita</a></li>
+            <li>Berita Lengkap</li>
           </ol>
         </div>
 
       </div>
     </div><!-- End Breadcrumbs -->
 
-    <!-- ======= Blog Section ======= -->
+    <!-- ======= Blog Details Section ======= -->
     <section id="blog" class="blog">
       <div class="container" data-aos="fade-up">
 
@@ -26,47 +27,27 @@
 
           <div class="col-lg-8">
 
-            <div class="row gy-4 posts-list">
+            <article class="blog-details">
 
-                @foreach ($list_berita as $berita)
-                <div class="col-lg-6">
-                    <article class="d-flex flex-column">
+              <div class="post-img">
+                <img src="assets/img/blog/blog-1.jpg" alt="" class="img-fluid">
+              </div>
 
-                    <div class="post-img">
-                        <img src="assets/img/blog/blog-1.jpg" alt="" class="img-fluid">
-                    </div>
+              <h2 class="title">{{ $berita->title }}</h2>
 
-                    <h2 class="title">
-                        <a href="{{ route('berita-detail-user', $berita->id) }}">{{ $berita->title }}</a>
-                    </h2>
+              <div class="meta-top">
+                <ul>
+                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="#!">{{ $berita->name }}</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="#!"> {{ date("d M, Y", strtotime($berita->created_at)) }} </a></li>
+                </ul>
+              </div><!-- End meta top -->
 
-                    <div class="meta-top">
-                        <ul>
-                        <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="#!">{{ $berita->name }}</a></li>
-                        <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="#!">{{ date("d M, Y", strtotime($berita->created_at)) }}</a></li>
-                        </ul>
-                    </div>
+              <div class="content">
+                {!! $berita->content !!}
 
-                    <div class="content">
-                        <p>
-                        {!! substr_replace($berita->content, "...", 70) !!}
-                        </p>
-                    </div>
+              </div><!-- End post content -->
 
-                    <div class="read-more mt-auto align-self-end">
-                        <a href="{{ route('berita-detail-user', $berita->id) }}">Read More</a>
-                    </div>
-
-                    </article>
-                </div><!-- End post list item -->
-                @endforeach
-            </div><!-- End blog posts list -->
-
-            <div class="blog-pagination">
-              <ul class="justify-content-center">
-                <li class="active"><a href="#">1</a></li>
-              </ul>
-            </div><!-- End blog pagination -->
+            </article><!-- End blog post -->
 
           </div>
 
@@ -126,11 +107,10 @@
             </div><!-- End Blog Sidebar -->
 
           </div>
-
         </div>
 
       </div>
-    </section><!-- End Blog Section -->
+    </section><!-- End Blog Details Section -->
 
   </main><!-- End #main -->
 @stop

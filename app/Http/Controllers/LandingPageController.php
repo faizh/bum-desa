@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\News;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -16,7 +17,18 @@ class LandingPageController extends Controller
     }
 
     public function berita() : View {
-        return view('contents.berita');
+        $berita = News::getAllNews();
+        return view('contents.berita', [
+            'list_berita' => $berita
+        ]);
+    }
+
+    public function beritaDetail(int $beritaId) : View {
+        $berita = News::getNewsDetails($beritaId);
+
+        return view('contents.berita-details', [
+            'berita'    => $berita
+        ]);
     }
 
     public function portofolio() : View {

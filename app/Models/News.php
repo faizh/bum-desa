@@ -18,12 +18,23 @@ class News extends Model
     ];
 
     public static function getAllNews() : Array {
-        $users = DB::select("SELECT
+        $news = DB::select("SELECT
         n.*,
         u.name
         FROM news n 
         JOIN users u ON n.created_by = u.id");
 
-        return $users;
+        return $news;
+    }
+
+    public static function getNewsDetails(int $id) {
+        $news = DB::select("SELECT
+        n.*,
+        u.name
+        FROM news n 
+        JOIN users u ON n.created_by = u.id
+        WHERE n.id = {$id}");
+
+        return $news[0];
     }
 }
