@@ -134,6 +134,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/layanan_peminjaman', [GoodsLoanController::class, 'index'])->name('layanan_peminjaman');
     Route::get('/layanan_peminjaman/create', [GoodsLoanController::class, 'create'])->name('layanan_peminjaman-create');
     Route::post('/layanan_peminjaman/store', [GoodsLoanController::class, 'store'])->name('layanan_peminjaman-store');
+    Route::get('/layanan_peminjaman/view/{id}', [GoodsLoanController::class, 'show'])->name('layanan_peminjaman-view');
+    Route::get('/layanan_peminjaman/edit/{id}', [GoodsLoanController::class, 'edit'])->name('layanan_peminjaman-edit');
+    Route::post('/layanan_peminjaman/update/{id}', [GoodsLoanController::class, 'update'])->name('layanan_peminjaman-update');
+    Route::get('/layanan_peminjaman/delete/{id}', [GoodsLoanController::class, 'destroy'])->name('layanan_peminjaman-delete');
 });
 
 Route::post('/act_login', [AdminController::class, 'authenticate'])->name('post.login');

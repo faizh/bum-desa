@@ -30,9 +30,9 @@
                                   <td>{{ $loan->name }}</td>
                                   <td>{{ number_format($loan->total_price) }}</td>
                                   <td>
-                                    <a href="{{ route('layanan_keuangan-view', $loan->id) }}" class="btn btn-xs btn-primary"><i class="bi bi-eye"></i></a>
-                                    <a href="{{ route('layanan_keuangan-edit', $loan->id) }}" class="btn btn-xs btn-warning"><i class="bi bi-pencil"></i></a>
-                                    <a href="{{ route('layanan_keuangan-delete', $loan->id) }}" class="btn btn-xs btn-danger"><i class="bi bi-trash"></i></a>
+                                    <a href="{{ route('layanan_peminjaman-view', $loan->id) }}" class="btn btn-xs btn-primary"><i class="bi bi-eye"></i></a>
+                                    <a href="{{ route('layanan_peminjaman-edit', $loan->id) }}" class="btn btn-xs btn-warning"><i class="bi bi-pencil"></i></a>
+                                    <a href="{{ route('layanan_peminjaman-delete', $loan->id) }}" class="btn btn-xs btn-danger"><i class="bi bi-trash"></i></a>
                                   </td>
                                 </tr>
                               @endforeach
