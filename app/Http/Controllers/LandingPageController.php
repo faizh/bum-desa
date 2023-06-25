@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\News;
+use App\Models\Portfolio;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -34,6 +35,18 @@ class LandingPageController extends Controller
     }
 
     public function portofolio() : View {
-        return view('contents.portofolio');
+        $portofolios = Portfolio::all();
+
+        return view('contents.portofolio', [
+            'portofolios'    => $portofolios
+        ]);
+    }
+
+    public function portofolioDetails (int $id) : View {
+        $portofolio = Portfolio::find($id);
+
+        return view('contents.portofolio-details ', [
+            'portofolio'    => $portofolio
+        ]);
     }
 }
