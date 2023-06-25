@@ -24,10 +24,12 @@ class LandingPageController extends Controller
     }
 
     public function beritaDetail(int $beritaId) : View {
-        $berita = News::getNewsDetails($beritaId);
+        $berita         = News::getNewsDetails($beritaId);
+        $latest_news    = News::getLatestNews();
 
         return view('contents.berita-details', [
-            'berita'    => $berita
+            'berita'        => $berita,
+            'latest_news'   => $latest_news
         ]);
     }
 

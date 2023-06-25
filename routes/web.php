@@ -55,9 +55,6 @@ use App\Http\Controllers\PortfolioController;
 // Route::get('/pkeuangan', function () {
 //     return view('pkeuangan');
 // })->name('pkeuangan');
-// Route::get('/login', function () {
-//     return view('login');
-// })->name('login');
 
 // Route::get('/admin', function () {
 //     return view('admin');
@@ -142,6 +139,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::post('/layanan_peminjaman/update/{id}', [GoodsLoanController::class, 'update'])->name('layanan_peminjaman-update');
     Route::get('/layanan_peminjaman/delete/{id}', [GoodsLoanController::class, 'destroy'])->name('layanan_peminjaman-delete');
 });
+
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
 
 Route::post('/act_login', [AdminController::class, 'authenticate'])->name('post.login');
 Route::get('/logout', [AdminController::class, 'logout'])->name('logout');

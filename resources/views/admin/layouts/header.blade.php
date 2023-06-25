@@ -46,7 +46,7 @@
                                 <a href="{{ route('dashboard')}}" aria-expanded="true"><span>Dashboard</span></a>
                             </li>
                             <li class="@if ($page == 'berita') active @endif">
-                                <a href="{{ route('berita-user') }}" aria-expanded="true"><span>Berita
+                                <a href="{{ route('berita') }}" aria-expanded="true"><span>Berita
                                     </span></a>
                             </li>
                             <li class="@if ($page == 'portofolio') active @endif">

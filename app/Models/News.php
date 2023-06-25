@@ -37,4 +37,15 @@ class News extends Model
 
         return $news[0];
     }
+
+    public static function getLatestNews() {
+        $news = DB::table('news AS n')
+                ->select('n.*', 'u.name')
+                ->join('users AS u', 'u.id', 'n.created_by')
+                ->orderBy('n.created_at', 'DESC')
+                ->limit(10)
+                ->get();
+
+        return $news;
+    }
 }
