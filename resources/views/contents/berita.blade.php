@@ -33,7 +33,7 @@
                     <article class="d-flex flex-column">
 
                     <div class="post-img">
-                        <img src="assets/img/blog/blog-1.jpg" alt="" class="img-fluid">
+                        <img src="{{ asset(Storage::url($berita->image_upload_path))}}" alt="" class="img-fluid">
                     </div>
 
                     <h2 class="title">
