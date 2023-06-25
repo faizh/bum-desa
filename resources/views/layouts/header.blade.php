@@ -55,7 +55,7 @@
           <li class="dropdown megamenu"><a href="#"><span>Layanan</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
               <li>
-                <a href=" {{url('/pkeuangan')}}">Peminjaman Keuangan</a>
+                <a href=" {{ route('monay-loan') }}">Peminjaman Keuangan</a>
                 <a href="{{url('/pbarang')}}">Peminjaman Barang</a>
               </li>
             </ul>

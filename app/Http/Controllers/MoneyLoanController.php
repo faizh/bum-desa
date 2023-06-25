@@ -215,4 +215,14 @@ class MoneyLoanController extends Controller
 
         return redirect()->route('layanan_keuangan');
     }
+
+    public function getMonthyFee($loanAmount, $loanDuration) {
+        $interestRate       = 0.015; // Bunga 1.5% per bulan
+        $monthlyInterest    = $loanAmount * $interestRate;
+        $totalPayment       = $loanAmount + ($monthlyInterest * $loanDuration);
+        $monthlyPayment     = $totalPayment / $loanDuration;
+        $roundedPayment     = round($monthlyPayment);
+
+        return $roundedPayment;
+    }
 }

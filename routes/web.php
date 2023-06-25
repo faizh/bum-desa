@@ -149,7 +149,13 @@ Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
 
 Route::get('/', [LandingPageController::class, 'index'])->name('landing-page');
 Route::get('/profile', [LandingPageController::class, 'profile'])->name('profile');
+
 Route::get('/berita', [LandingPageController::class, 'berita'])->name('berita-user');
 Route::get('/berita_detail/{id}', [LandingPageController::class, 'beritaDetail'])->name('berita-detail-user');
+
 Route::get('/portofolio', [LandingPageController::class, 'portofolio'])->name('portofolio-user');
+Route::get('/portofolio-details/{id}', [LandingPageController::class, 'portofolioDetails'])->name('portofolio-detail-user');
+
+Route::get('/money-loan', [LandingPageController::class, 'moneyLoan'])->name('monay-loan');
+Route::post('/money-loan/store', [LandingPageController::class, 'moneyLoanStore'])->name('money-loan.post');
 Route::get('/portofolio-details/{id}', [LandingPageController::class, 'portofolioDetails'])->name('portofolio-detail-user');
