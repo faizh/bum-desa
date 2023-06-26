@@ -156,6 +156,6 @@ Route::get('/berita_detail/{id}', [LandingPageController::class, 'beritaDetail']
 Route::get('/portofolio', [LandingPageController::class, 'portofolio'])->name('portofolio-user');
 Route::get('/portofolio-details/{id}', [LandingPageController::class, 'portofolioDetails'])->name('portofolio-detail-user');
 
-Route::get('/money-loan', [LandingPageController::class, 'moneyLoan'])->name('monay-loan');
+Route::get('/money-loan', [LandingPageController::class, 'moneyLoan'])->name('money-loan');
 Route::post('/money-loan/store', [LandingPageController::class, 'moneyLoanStore'])->name('money-loan.post');
 Route::get('/portofolio-details/{id}', [LandingPageController::class, 'portofolioDetails'])->name('portofolio-detail-user');
