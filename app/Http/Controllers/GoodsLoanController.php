@@ -144,11 +144,13 @@ class GoodsLoanController extends Controller
 
         $loan->ktp_path     = Storage::url($loan->ktp_path);
         $list_barang        = Barang::all();
+        $selectedBarang     = GoodsLoanDetails::getDetailSelectedBarang($id);
 
         return view('admin.contents.goods-loan.layanan-peminjaman-edit', [
-            'page'          => $page, 
-            'loan'          => $loan,
-            'list_barang'   => $list_barang
+            'page'              => $page, 
+            'loan'              => $loan,
+            'list_barang'       => $list_barang,
+            'selectedBarang'    => $selectedBarang
         ]);
     }
 

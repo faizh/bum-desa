@@ -33,7 +33,7 @@
                                 <label for="formjudul" class="form-label">Pilih Barang</label>
                                 <div class="row">
                                     <div class="col-md-11">
-                                        <select class="form-control" name="barang" id="barang" required>
+                                        <select class="form-control" id="barang" required>
                                             <option selected disabled value="">Barang yang mau dipinjam</option>
                                             @foreach ($list_barang as $barang)
                                                 <option value="{{ $barang->id }}"> {{ $barang->name }}</option>

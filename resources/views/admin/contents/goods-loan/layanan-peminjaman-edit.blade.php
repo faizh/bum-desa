@@ -31,12 +31,35 @@
                             </div>
                             <div class="mb-3">
                                 <label for="formjudul" class="form-label">Pilih Barang</label>
-                                <select class="form-control" name="barang" required>
-                                    <option selected value="">Barang yang mau dipinjam</option>
-                                    @foreach ($list_barang as $barang)
-                                        <option value="{{ $barang->id }}"> {{ $barang->name }}</option>
+                                <div class="row">
+                                    <div class="col-md-11">
+                                        <select class="form-control" id="barang" required>
+                                            <option selected disabled value="">Barang yang mau dipinjam</option>
+                                            @foreach ($list_barang as $barang)
+                                                <option value="{{ $barang->id }}"> {{ $barang->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <button type="button" class="btn btn-sm btn-primary" onclick="addBarang()">+</button>
+                                    </div>
+                                </div>
+
+                                <div class="selected-barang">
+                                    <label for="formjudul" class="mt-2 form-label">Barang yang dipilih :</label>
+                                    @foreach ($selectedBarang as $barang)
+                                        <?php $selectedBarangId[] = $barang->id ?>
+                                        <div class='row' id='barang-{{$barang->id}}'>
+                                            <div class='col-md-11 mt-2'>
+                                                <input type='text' id='barang-{{$barang->id}}' class='form-control' value='{{ $barang->name }}' disabled>
+                                            </div>
+                                            <div class='col-md-1 mt-2'>
+                                                <a href='#1' class='btn btn-sm btn-danger' onclick='deleteBarang({{ $barang->id }})'>X</a>
+                                            </div>
+                                            <input type='hidden' name='barang[]' value='{{ $barang->id }}'>
+                                        </div>
                                     @endforeach
-                                </select>
+                                </div>
                             </div>
 
                             <div class="row mb-3">
@@ -65,4 +88,41 @@
     <!-- overview area end -->
     <!-- row area start -->
 </div>
+
+<script src="{{asset('assets/js/vendor/jquery-2.2.4.min.js')}}"></script>
+<script>
+    var selectedBarangId = [];
+    function addBarang() {
+        var barang = document.getElementById("barang");
+        var barangId = barang.value;
+        var barangName = barang.options[barang.selectedIndex].text;
+
+        if (barangId == '') {
+            alert("Pilih barang terlebih dulu!");
+            return false;
+        }
+        
+        if (selectedBarangId.includes(barangId)){
+            alert('Barang sudah dipilih!');
+            return false;
+        }
+        
+        var input       = "<div class='row' id='barang-" + barangId + "'>";
+        input           += "<div class='col-md-11 mt-2'><input type='text' id='barang-" + barangId + "' class='form-control' value='" + barangName + "' disabled></div>";
+        input           += "<div class='col-md-1 mt-2'><a href='#1' class='btn btn-sm btn-danger' onclick='deleteBarang(" + barangId + ")'>X</a></div>";
+        input           += "<input type='hidden' name='barang[]' value='" + barangId + "'>";
+        input           += "</div>";
+        
+        $('.selected-barang').append(input);
+
+        selectedBarangId.push(barangId);
+    }
+
+    function deleteBarang(barangId) {
+        var element = document.getElementById("barang-"+barangId);
+        element.remove();
+
+        selectedBarangId.pop(barangId);
+    }
+</script>
 @stop

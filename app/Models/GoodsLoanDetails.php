@@ -19,7 +19,8 @@ class GoodsLoanDetails extends Model
     public static function getDetailSelectedBarang(int $goods_loan_id) : Array {
         $barang = DB::select("SELECT 
         b.`name`,
-        b.`price`
+        b.`price`,
+        b.`id`
         FROM `goods_loan_details` gld
         JOIN barang b ON b.`id` = gld.`barang_id`
         WHERE gld.`goods_loan_id` = $goods_loan_id");
