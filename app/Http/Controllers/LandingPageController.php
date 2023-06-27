@@ -26,8 +26,11 @@ class LandingPageController extends Controller
 
     public function berita() : View {
         $berita = News::getAllNews();
+        $latest_news    = News::getLatestNews();
+
         return view('contents.berita', [
-            'list_berita' => $berita
+            'list_berita'   => $berita,
+            'latest_news'   => $latest_news
         ]);
     }
 
