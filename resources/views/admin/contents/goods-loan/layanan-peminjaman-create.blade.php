@@ -29,6 +29,7 @@
                                 <label for="exampleFormControlTextarea1" class="form-label">Alamat Lengkap</label>
                                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="address"></textarea>
                             </div>
+
                             <div class="mb-3">
                                 <label for="formjudul" class="form-label">Pilih Barang</label>
                                 <div class="row">
@@ -95,20 +96,23 @@
         
         var input       = "<div class='row' id='barang-" + barangId + "'>";
         input           += "<div class='col-md-11 mt-2'><input type='text' id='barang-" + barangId + "' class='form-control' value='" + barangName + "' disabled></div>";
-        input           += "<div class='col-md-1 mt-2'><a href='#1' class='btn btn-sm btn-danger' onclick='deleteBarang(" + barangId + ")'>X</a></div>";
+        input           += "<div class='col-md-1 mt-2'><a href='#!' class='btn btn-sm btn-danger' onclick='deleteBarang(" + barangId + ")'>X</a></div>";
         input           += "<input type='hidden' name='barang[]' value='" + barangId + "'>";
         input           += "</div>";
         
         $('.selected-barang').append(input);
 
-        selectedBarangId.push(barangId);
+        selectedBarangId.push(parseInt(barangId));
     }
 
     function deleteBarang(barangId) {
         var element = document.getElementById("barang-"+barangId);
         element.remove();
 
-        selectedBarangId.pop(barangId);
+        var index = selectedBarangId.indexOf(barangId);
+        if (index > -1) { // only splice array when item is found
+          selectedBarangId.splice(index, 1); // 2nd parameter means remove one item only
+        }
     }
 </script>
 @stop
