@@ -31,8 +31,9 @@
                             </div>
                             <div class="mb-3">
                                 <label for="formjudul" class="form-label">Barang</label>
-                                1. Nama Barang 1
-                                2. Nama Barang 2
+                                @foreach ($selectedBarang as $barang)
+                                    <input type="text" class="mt-2 form-control" value="{{ $barang->name }}" disabled>
+                                @endforeach
                             </div>
 
                             <div class="row mb-3">
@@ -48,7 +49,7 @@
 
                             <div class="mb-3">
                                 <label for="formjudul" class="form-label">Total Harga</label>
-                                <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="" name="phone_number" value="{{ $loan->total_price }}" disabled>
+                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="" name="phone_number" value="Rp {{ number_format($loan->total_price) }}" disabled>
                             </div>
 
                             <div class="mb-3">
