@@ -158,4 +158,6 @@ Route::get('/portofolio-details/{id}', [LandingPageController::class, 'portofoli
 
 Route::get('/money-loan', [LandingPageController::class, 'moneyLoan'])->name('money-loan');
 Route::post('/money-loan/store', [LandingPageController::class, 'moneyLoanStore'])->name('money-loan.post');
-Route::get('/portofolio-details/{id}', [LandingPageController::class, 'portofolioDetails'])->name('portofolio-detail-user');
+
+Route::get('/goods-loan', [LandingPageController::class, 'goodsLoan'])->name('goods-loan');
+Route::post('/goods-loan/store', [LandingPageController::class, 'goodsLoanStore'])->name('goods-loan.post');

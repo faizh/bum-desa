@@ -56,7 +56,7 @@
             <ul>
               <li>
                 <a href=" {{ route('money-loan') }}">Peminjaman Keuangan</a>
-                <a href="{{url('/pbarang')}}">Peminjaman Barang</a>
+                <a href="{{ route('goods-loan') }}">Peminjaman Barang</a>
               </li>
             </ul>
           </li>
