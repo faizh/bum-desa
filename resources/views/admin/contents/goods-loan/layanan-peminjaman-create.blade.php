@@ -29,14 +29,26 @@
                                 <label for="exampleFormControlTextarea1" class="form-label">Alamat Lengkap</label>
                                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="address"></textarea>
                             </div>
+
                             <div class="mb-3">
                                 <label for="formjudul" class="form-label">Pilih Barang</label>
-                                <select class="form-control" name="barang" required>
-                                    <option selected value="">Barang yang mau dipinjam</option>
-                                    @foreach ($list_barang as $barang)
-                                        <option value="{{ $barang->id }}"> {{ $barang->name }}</option>
-                                    @endforeach
-                                </select>
+                                <div class="row">
+                                    <div class="col-md-11">
+                                        <select class="form-control" id="barang" required>
+                                            <option selected disabled value="">Barang yang mau dipinjam</option>
+                                            @foreach ($list_barang as $barang)
+                                                <option value="{{ $barang->id }}"> {{ $barang->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <button type="button" class="btn btn-sm btn-primary" onclick="addBarang()">+</button>
+                                    </div>
+                                </div>
+
+                                <div class="selected-barang">
+                                    <label for="formjudul" class="mt-2 form-label">Barang yang dipilih :</label>
+                                </div>
                             </div>
 
                             <div class="row mb-3">
@@ -64,4 +76,43 @@
     <!-- overview area end -->
     <!-- row area start -->
 </div>
+
+<script>
+    var selectedBarangId = [];
+    function addBarang() {
+        var barang = document.getElementById("barang");
+        var barangId = barang.value;
+        var barangName = barang.options[barang.selectedIndex].text;
+
+        if (barangId == '') {
+            alert("Pilih barang terlebih dulu!");
+            return false;
+        }
+
+        if (selectedBarangId.includes(barangId)){
+            alert('Barang sudah dipilih!');
+            return false;
+        }
+        
+        var input       = "<div class='row' id='barang-" + barangId + "'>";
+        input           += "<div class='col-md-11 mt-2'><input type='text' id='barang-" + barangId + "' class='form-control' value='" + barangName + "' disabled></div>";
+        input           += "<div class='col-md-1 mt-2'><a href='#!' class='btn btn-sm btn-danger' onclick='deleteBarang(" + barangId + ")'>X</a></div>";
+        input           += "<input type='hidden' name='barang[]' value='" + barangId + "'>";
+        input           += "</div>";
+        
+        $('.selected-barang').append(input);
+
+        selectedBarangId.push(parseInt(barangId));
+    }
+
+    function deleteBarang(barangId) {
+        var element = document.getElementById("barang-"+barangId);
+        element.remove();
+
+        var index = selectedBarangId.indexOf(barangId);
+        if (index > -1) { // only splice array when item is found
+          selectedBarangId.splice(index, 1); // 2nd parameter means remove one item only
+        }
+    }
+</script>
 @stop

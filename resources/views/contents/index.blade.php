@@ -1,6 +1,7 @@
+@extends('layouts.layout')
 
-
-  <section id="hero-animated" class="hero-animated d-flex align-items-center">
+@section('content')
+<section id="hero-animated" class="hero-animated d-flex align-items-center">
     <div class="container d-flex flex-column justify-content-center align-items-center text-center position-relative" data-aos="zoom-out">
       <img src="assets/img/office_02.jpg" class="img-fluid animated">
       <h2>Welcome to <span>BUMDesa</span></h2>
@@ -397,4 +398,4 @@
     </section><!-- End Contact Section -->
 
   </main><!-- End #main -->
-
+@stop

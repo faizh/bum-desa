@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('ktp_path');
             $table->string('holding_ktp_path');
             $table->string('kk_path');
-            $table->integer('created_by');
+            $table->integer('created_by')->nullable();
             $table->timestamps();
         });
     }
