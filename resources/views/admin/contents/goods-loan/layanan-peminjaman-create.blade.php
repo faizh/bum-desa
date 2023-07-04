@@ -54,11 +54,11 @@
                             <div class="row mb-3">
                                 <label for="inputjml" class="col-sm-2 col-form-label">Tanggal Peminjaman</label>
                                 <div class="col-sm-4">
-                                  <input type="date" name="start_date" class="form-control" id="inputjml" required>
+                                  <input type="date" name="start_date" class="form-control" id="start" onchange="setEndDate(this)" required>
                                 </div>
                                 <label for="inputjml" class="col-sm-2 col-form-label">Sampai tanggal ke </label>
                                 <div class="col-sm-4">
-                                  <input type="date" name="end_date" class="form-control" id="inputjml" required>
+                                  <input type="date" name="end_date" class="form-control" id="end" onchange="setStartDate(this)" required>
                                 </div>
                             </div>
 
@@ -113,6 +113,14 @@
         if (index > -1) { // only splice array when item is found
           selectedBarangId.splice(index, 1); // 2nd parameter means remove one item only
         }
+    }
+
+    function setEndDate(input) {
+      document.getElementById("end").min = input.value;
+    }
+
+    function setStartDate(input) {
+      document.getElementById("start").max = input.value;
     }
 </script>
 @stop
